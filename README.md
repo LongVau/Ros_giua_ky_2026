@@ -21,7 +21,11 @@ source install/setup.bash
 ```
 
 ### Khởi động môi trường (Terminal 1)
-
+* Sửa file xe_ros.urdf: tìm đến dòng 700, có đoạn sau
+  ```bash
+  <parameters>/root/humble_ws/src/xe_ros/config/arm_controller.yaml</parameters>
+  ```
+  Chỉnh sửa đường dẫn/root/humble_ws/... thành đường dẫn đến file arm_controller.yaml tương ứng trên máy thực thi
 Trường hợp Gazebo không thể tìm thấy file mesh (.STL), ta phải chỉ đường cho nó
 ```bash
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/humble_ws/install/xe_ros/share # Có thể thay đổi đường dẫn thành đường dẫn tới vị trí tương ứng trong máy khác
@@ -49,7 +53,6 @@ sudo apt install ros-humble-ros2-control \
                  ros-humble-ros2-controllers \
                  ros-humble-gazebo-ros2-control
 ```
-
 
 * Di chuyển tới folder chứa file arm_control_node.py
 ```bash
