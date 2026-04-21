@@ -1,6 +1,5 @@
 ## Giới thiệu
 Mô phỏng hoạt động của một robot chạy bằng cơ cấu Ackermann (car-like), với 3 sensor (LiDAR, Camera, GPS), và một tay máy 2 link, 2 khớp xoay 
-## tinh nang
 * **Cơ cấu di chuyển:** Sử dụng plugin gazebo_ros_ackermann_drive để điều khiển xe mượt mà
 * **Manipulator:** Cánh tay 2 bậc tự do (Pan-Tilt) được điều khiển vị trí mượt mà thông qua hệ sinh thái `ros2_control` và `joint_trajectory_controller`.
 * **Sensors:** Tích hợp và hiển thị đồng bộ trên RViz:
@@ -8,12 +7,12 @@ Mô phỏng hoạt động của một robot chạy bằng cơ cấu Ackermann (
   * Camera RGB.
   * GPS (hiển thị tọa độ của  trên terminal)
 
-## run
+## Chạy
 
 ### Dọn dẹp và Build Workspace
 ```bash
 cd ~/humble_ws #(Có thể đổi tên workspace khác nếu cần thiết)
-# Dọn dẹp những gì còn sót lại của những build trước
+# Dọn rác (optional)
 rm -rf build/ install/ log/
 
 # Build package, tạo môi trường làm việc
@@ -21,14 +20,14 @@ colcon build
 source install/setup.bash
 ```
 
-### Khởi động Môi trường (Terminal 1)
+### Khởi động môi trường (Terminal 1)
 
 ```bash
-# Chỉ đường cho Gazebo tìm file .STL
+# Trường hợp Gazebo không thể tìm thấy file mesh (.STL), ta phải chỉ đường cho nó
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/humble_ws/install/xe_ros/share # Có thể thay đổi đường dẫn thành đường dẫn tới vị trí tương ứng trong máy khác
 
 # Khởi động Gazebo và RViz
-ros2 launch xe_ró gazebo.launch.py
+ros2 launch xe_ros gazebo.launch.py
 ```
 
 ### Di chuyển Robot (Terminal 2)
@@ -52,8 +51,8 @@ ros2 topic pub /arm_controller/joint_trajectory trajectory_msgs/msg/JointTraject
 }" -1
 ```
 
-## Hiện tọa độ của xe bằng GPS
-Ngoại trừ GPS, tất cả những sensor khác sẽ được hiển thị trong RViz, vì thế nên chúng ta có thể nhìn vào topic gps để có thể xác định được tọa độ của xe
+### Hiện tọa độ của xe bằng GPS
+Ngoại trừ GPS, tất cả những sensor khác sẽ được hiển thị trong RViz, vì thế nên chúng ta có thể nhìn vào topic /gps để có thể xác định được tọa độ của xe
 ```bash
 ros2 topic echo /gps/fix
 ```
