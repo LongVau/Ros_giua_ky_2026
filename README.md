@@ -2,10 +2,10 @@
 Mô phỏng hoạt động của một robot chạy bằng cơ cấu Ackermann (car-like), với 3 sensor (LiDAR, Camera, GPS), và một tay máy 2 link, 2 khớp xoay 
 * **Cơ cấu di chuyển:** Sử dụng plugin gazebo_ros_ackermann_drive để điều khiển xe mượt mà
 * **Manipulator:** Cánh tay 2 bậc tự do (Pan-Tilt) được điều khiển vị trí mượt mà thông qua hệ sinh thái `ros2_control` và `joint_trajectory_controller`.
-* **Sensors:** Tích hợp và hiển thị đồng bộ trên RViz:
-  * Lidar 360 độ.
-  * Camera RGB.
-  * GPS (hiển thị tọa độ của  trên terminal)
+* **Sensors:** Tích hợp và hiển thị đồng bộ trên RViz hoặc trên terminal:
+  * Lidar
+  * Camera
+  * GPS (hiển thị tọa độ của robot trên terminal)
 
 ## Chạy
 
