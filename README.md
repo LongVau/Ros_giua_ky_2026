@@ -41,7 +41,8 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 Hướng dẫn sẽ hiện ra trên màn hình terminal
 
 ### Điều khiển Tay máy
-Cài đặt ros2_control
+* Sử dụng một file python để gửi tín hiệu điều khiển tay máy đến topic /arm_controller/joint_trajectory
+* Cài đặt ros2_control
 ```bash
 sudo apt update
 sudo apt install ros-humble-ros2-control \
@@ -49,17 +50,16 @@ sudo apt install ros-humble-ros2-control \
                  ros-humble-gazebo-ros2-control
 ```
 
-Sử dụng một file python để gửi tín hiệu điều khiển tay máy đến topic /arm_controller/joint_trajectory
 
-Di chuyển tới folder chứa file arm_control_node.py
+* Di chuyển tới folder chứa file arm_control_node.py
 ```bash
 cd ~/humble_ws/src/xe_ros/scripts
 ```
-Cấp quyền thực thi cho nó (chỉ làm 1 lần)
+* Cấp quyền thực thi cho nó (chỉ làm 1 lần)
 ```bash
 chmod +x keyboard_arm_control.py
 ```
-Chạy node điều khiển tay máy
+* Chạy node điều khiển tay máy
 ```bash
 python3 keyboard_arm_control.py
 ```
