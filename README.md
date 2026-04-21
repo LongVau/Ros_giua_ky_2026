@@ -50,7 +50,7 @@ ros2 topic pub /arm_controller/joint_trajectory trajectory_msgs/msg/JointTraject
   }]
 }" -1
 ```
-Có thể thay đối giá trị ở đây, với bot_rotate là continous, arm_joint có limit từ -0.6 đến 0.6
+Có thể thay đối giá trị ở đây, với bot_rotate là continous, arm_joint có limit từ -0.6 đến 0.6.
 
 ### Hiện tọa độ của xe bằng GPS
 Ngoại trừ GPS, tất cả những sensor khác sẽ được hiển thị trong RViz, vì thế nên chúng ta có thể nhìn vào topic /gps để có thể xác định được tọa độ của xe
