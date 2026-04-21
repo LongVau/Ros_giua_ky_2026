@@ -1,0 +1,782 @@
+<?xml version="1.0"?>
+<robot
+  name="xe_ros">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.041604759230865 2.91433543964104E-16 0.00953000268304519"
+        rpy="0 0 0" />
+      <mass
+        value="10.0" />
+      <inertia
+        ixx="0.2"
+        ixy="0"
+        ixz="0"
+        iyy="0.2"
+        iyz="0"
+        izz="0.2" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.025 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.3 0.2 0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_steer">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 0.0062173 -0.013579"
+        rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/left_steer.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    
+  </link>
+  <joint
+    name="ackermann_left"
+    type="revolute">
+    <origin
+      xyz="0.084858 0.095 0.01"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_steer" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.6"
+      upper="0.6"
+      effort="100"
+      velocity="10" />
+    <dynamics
+      damping="0.5"
+      friction="0.2" />
+  </joint>
+  <link
+    name="front_left_wheel">
+    <inertial>
+      <origin
+        xyz="0 2.7756E-17 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.31416" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.02"
+        iyz="0"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/front_left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5078 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.02" /> 
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left"
+    type="continuous">
+    <origin
+      xyz="0 0.05 -0.0150000000000002"
+      rpy="0 0 0" />
+    <parent
+      link="left_steer" />
+    <child
+      link="front_left_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="100"
+      velocity="50" />
+    <dynamics
+      damping="0.01"
+      friction="0.01" />
+  </joint>
+  <link
+    name="right_steer">
+    <inertial>
+      <origin
+        xyz="-1.3878E-17 -0.0062173 -0.013579"
+        rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/right_steer.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    
+  </link>
+  <joint
+    name="ackermann_right"
+    type="revolute">
+    <origin
+      xyz="0.0848579858738173 -0.0950000000000006 0.0100000000000003"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_steer" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.6"
+      upper="0.6"
+      effort="100"
+      velocity="10" />
+    <dynamics
+      damping="0.5"
+      friction="0.2" />
+  </joint>
+  <link
+    name="front_right_wheel">
+    <inertial>
+      <origin
+        xyz="1.3878E-17 1.3878E-17 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.31416" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.02"
+        iyz="0"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/front_right_wheel.STL" /> 
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.02" /> 
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right"
+    type="continuous">
+    <origin
+      xyz="0 -0.05 -0.015"
+      rpy="0 0 0" />
+    <parent
+      link="right_steer" />
+    <child
+      link="front_right_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="100"
+      velocity="50" />
+    <dynamics
+      damping="0.005"
+      friction="0.005" />
+  </joint>
+  <link
+    name="rear_left_wheel">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 2.7756E-17 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="2.31416" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.02"
+        iyz="0"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/rear_left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.02" /> 
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_left"
+    type="continuous">
+    <origin
+      xyz="-0.150142014126181 0.145000000000001 -0.00500000000000055"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_left_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="100"
+      velocity="50" />
+    <dynamics
+      damping="0.5"
+      friction="0.5" />
+  </joint>
+  <link
+    name="rear_right_wheel">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 2.7756E-17 0"
+        rpy="0 0 0" />
+      <mass
+        value="2.31416" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.02"
+        iyz="0"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/rear_right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.02" />  
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_right"
+    type="continuous">
+    <origin
+      xyz="-0.15014 -0.145 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_right_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="100"
+      velocity="50" />
+    <dynamics
+      damping="0.5"
+      friction="0.5" />
+  </joint>
+
+  <gazebo reference="front_left_wheel">
+    <mu1>1.9</mu1>
+    <mu2>0.5</mu2>
+    <kp>100000.0</kp> <kd>100.0</kd>  <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel">
+    <mu1>1.9</mu1>
+    <mu2>0.5</mu2>
+    <kp>100000.0</kp>
+    <kd>100.0</kd>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="rear_left_wheel">
+    <mu1>3.0</mu1>
+    <mu2>3.0</mu2>
+    <kp>100000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="rear_right_wheel">
+    <mu1>3.0</mu1>
+    <mu2>3.0</mu2>
+    <kp>100000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="-1.1796E-16 0.0023818 -0.026941"
+        rpy="0 0 0" />
+      <mass
+        value="0.05668" />
+      <inertia
+        ixx="1.1271E-05"
+        ixy="-4.9371E-20"
+        ixz="1.4804E-20"
+        iyy="1.8455E-05"
+        iyz="1.4295E-07"
+        izz="1.5462E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="-1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="cam_mount"
+    type="fixed">
+    <origin
+      xyz="0.134857985873818 0 0.0225"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="8.3267E-17 3.4694E-17 -0.010546"
+        rpy="0 0 0" />
+      <mass
+        value="0.03774" />
+      <inertia
+        ixx="6.7746E-06"
+        ixy="7.918E-35"
+        ixz="-2.2212E-20"
+        iyy="6.7746E-06"
+        iyz="-1.1345E-20"
+        izz="9.9555E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_mount"
+    type="fixed">
+    <origin
+      xyz="0.102857985873818 0 0.073"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="gps">
+    <inertial>
+      <origin
+        xyz="3.33066907387547E-16 1.52655665885959E-16 -0.0450109181620072"
+        rpy="0 0 0" />
+      <mass
+        value="0.00923199566912878" />
+      <inertia
+        ixx="1.17192870008943E-06"
+        ixy="2.40125957628312E-22"
+        ixz="-4.84511820779604E-21"
+        iyy="1.17192870008943E-06"
+        iyz="-2.77959803157542E-21"
+        izz="1.9596689993416E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/gps.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/gps.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gps_mount"
+    type="fixed">
+    <origin
+      xyz="-0.15714 0 0.054"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="gps" />
+    <axis
+      xyz="0 0 0" />
+  </joint>\
+
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="-2.9845E-09 -2.0519E-09 0.10991"
+        rpy="0 0 0" />
+      <mass
+        value="0.66958" />
+      <inertia
+        ixx="0.0034787"
+        ixy="-5.081E-10"
+        ixz="3.5555E-10"
+        iyy="0.0035693"
+        iyz="1.9934E-10"
+        izz="0.00042586" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="bot_rotate"
+    type="continuous">
+    <origin
+      xyz="-0.070142 0 0.02"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="10"
+      velocity="5" />
+    <dynamics
+      damping="1.5"
+      friction="1.5" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.14562 6.5632E-09 1.18E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.87156" />
+      <inertia
+        ixx="0.00062215"
+        ixy="-3.4544E-10"
+        ixz="1.3052E-09"
+        iyy="0.005736"
+        iyz="2.3752E-10"
+        izz="0.0057412" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xe_ros/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="arm_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0.2375"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="10"
+      velocity="5" />
+    <dynamics
+      damping="2"
+      friction="2" />
+  </joint>
+
+  <gazebo>
+    <plugin name="gazebo_ros_ackermann_drive" filename="libgazebo_ros_ackermann_drive.so">
+      <ros>
+        <namespace>/</namespace>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+        <remapping>odom:=odom</remapping>
+      </ros>
+
+      <update_rate>50.0</update_rate>
+
+      <front_left_joint>front_left</front_left_joint>
+      <front_right_joint>front_right</front_right_joint>
+      <rear_left_joint>rear_left</rear_left_joint>
+      <rear_right_joint>rear_right</rear_right_joint>
+
+      <left_steering_joint>ackermann_left</left_steering_joint>
+      <right_steering_joint>ackermann_right</right_steering_joint>
+
+      <wheel_separation>0.4</wheel_separation> <wheel_base>0.5</wheel_base>             
+      <wheel_radius>0.05</wheel_radius>         
+      <max_steer>0.6</max_steer> 
+      <max_speed>2.0</max_speed> 
+      <left_steering_pid_gain>100 5 2</left_steering_pid_gain>
+      <right_steering_pid_gain>100 5 2</right_steering_pid_gain>
+      <linear_velocity_pid_gain>100 5 2</linear_velocity_pid_gain>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+    </plugin>
+  </gazebo>
+
+  <ros2_control name="ArmSystem" type="system">
+  <hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+  <joint name="bot_rotate">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="arm_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
+      <parameters>/root/humble_ws/src/xe_ros/config/arm_controller.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="lidar">
+    <sensor name="lidar_sensor" type="ray">
+      <always_on>true</always_on>
+      <visualize>true</visualize> <pose>0 0 0 0 0 0</pose>
+      <update_rate>10.0</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-3.14159</min_angle> <max_angle>3.14159</max_angle>  </horizontal>
+        </scan>
+        <range>
+          <min>0.12</min> <max>12.0</max> <resolution>0.015</resolution>
+        </range>
+      </ray>
+      <plugin name="gazebo_ros_lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <remapping>~/out:=scan</remapping> </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>lidar</frame_name>
+      </plugin>
+    </sensor>
+</gazebo>
+<gazebo reference="camera">
+  <sensor name="camera_sensor" type="camera">
+    <pose>0 0 0 0 0 -1.5708</pose>
+    <visualize>true</visualize>
+    <update_rate>30.0</update_rate> <camera>
+      <horizontal_fov>1.089</horizontal_fov> <image>
+        <format>R8G8B8</format>
+        <width>640</width>
+        <height>480</height>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>8.0</far>
+      </clip>
+    </camera>
+    <plugin name="gazebo_ros_camera_controller" filename="libgazebo_ros_camera.so">
+      <ros>
+        <namespace>camera</namespace>
+        <remapping>~/image_raw:=image_raw</remapping>
+        <remapping>~/camera_info:=camera_info</remapping>
+      </ros>
+      <camera_name>cam</camera_name>
+      <frame_name>camera</frame_name>
+    </plugin>
+  </sensor>
+</gazebo>
+<gazebo reference="gps">
+  <sensor name="gps_sensor" type="gps">
+    <always_on>true</always_on>
+    <update_rate>10.0</update_rate>
+    <plugin name="gazebo_ros_gps_controller" filename="libgazebo_ros_gps_sensor.so">
+      <ros>
+        <remapping>~/out:=gps/fix</remapping> </ros>
+      <frame_name>gps</frame_name>
+    </plugin>
+  </sensor>
+</gazebo>
+
+<gazebo>
+  <plugin name="gazebo_ros_joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+    <ros>
+      <namespace>/</namespace>
+      <remapping>~/out:=joint_states</remapping>
+    </ros>
+    <update_rate>30</update_rate>
+    <joint_name>ackermann_left</joint_name>
+    <joint_name>ackermann_right</joint_name>
+    <joint_name>rear_left</joint_name>
+    <joint_name>rear_right</joint_name>
+    <joint_name>front_left</joint_name>
+    <joint_name>front_right</joint_name>
+  </plugin>
+</gazebo>
+
+</robot>

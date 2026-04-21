@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'ackermann_left', 'front_left', 'ackermann_right', 'front_right', 'rear_left', 'rear_right', 'bot_rotate', 'arm_joint', ]
