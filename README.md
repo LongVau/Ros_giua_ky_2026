@@ -57,11 +57,11 @@ cd ~/humble_ws/src/xe_ros/scripts
 ```
 * Cấp quyền thực thi cho nó (chỉ làm 1 lần)
 ```bash
-chmod +x keyboard_arm_control.py
+chmod +x arm_control_node.py
 ```
 * Chạy node điều khiển tay máy
 ```bash
-python3 keyboard_arm_control.py
+python3 arm_control_node.py
 ```
 
 ### Hiện tọa độ của xe bằng GPS
